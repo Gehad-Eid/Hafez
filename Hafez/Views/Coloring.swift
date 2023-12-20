@@ -9,7 +9,54 @@ import SwiftUI
 
 struct Coloring: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+            // Background color
+            Color("bgColor").ignoresSafeArea()
+            
+            VStack {
+                HStack(alignment: .top){
+                    BackButtonCircle()
+                    Spacer()
+                    DoneButtonCircle()
+                    SpeakerButtonCircle()
+                }
+                
+                Spacer()
+                
+                Text("لوّن كل يوم صلاتك يا بطل")
+                    .font(.title)
+                    .foregroundStyle(Color("textColor"))
+                
+                Spacer()
+                
+                ZStack (alignment: .topTrailing){
+                    Image("imagec")
+                        .resizable()
+                        .frame(width: 300,height: 400)
+                    
+                    Image(systemName: "arrow.up.left.and.down.right.and.arrow.up.right.and.down.left")
+                        .padding(10)
+                }
+                
+                
+                HStack(alignment: .bottom){
+                    
+                    Image("gren")
+                        .resizable()
+                        .frame(width: 70,height: 200)
+                    Image("yel")
+                        .resizable()
+                        .frame(width: 70,height: 200)
+                    Image("red")
+                        .resizable()
+                        .frame(width: 70,height: 200)
+                    
+                }
+                
+                Spacer()
+                
+            }
+        }
     }
 }
 

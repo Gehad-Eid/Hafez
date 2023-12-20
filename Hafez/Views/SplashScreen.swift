@@ -9,7 +9,15 @@ import SwiftUI
 
 struct SplashScreen: View {
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            VStack{
+                BackButtonCircle()
+                NavigationLink(destination: Coloring().navigationBarBackButtonHidden(true)) {
+                    Text("Hello, World!")
+                    
+                }
+            }
+        }
     }
 }
 
