@@ -8,9 +8,23 @@
 import SwiftUI
 
 struct popUp: View {
+    @State private var showAlert = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+        VStack {
+                            Button("Show Pop-up") {
+                                showAlert = true
+                            }
+                        }
+                        .alert(isPresented: $showAlert) {
+                            Alert(
+                                title: Text("Hello"),
+                                message: Text("This is a pop-up notification!"),
+                                dismissButton: .default(Text("Custom Button")) {
+                                    // Handle custom button action
+                                    print("Custom button tapped")
+                                }
+                            )
+                        }    }
 }
 
 #Preview {
