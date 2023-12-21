@@ -32,7 +32,7 @@ struct Coloring: View {
                 ZStack (alignment: .topTrailing){
                     Image("imagec")
                         .resizable()
-                        .frame(width: 300,height: 400)
+                        .frame(width: 350,height: 400)
                     
                     Image(systemName: "arrow.up.left.and.down.right.and.arrow.up.right.and.down.left")
                         .padding(10)

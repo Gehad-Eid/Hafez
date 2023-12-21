@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B805E2762B341A0600C70B00 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = B805E2752B341A0600C70B00 /* Const.swift */; };
 		B8729E9C2B32DCFB00D3504A /* HafezApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8729E9B2B32DCFB00D3504A /* HafezApp.swift */; };
 		B8729EA02B32DCFB00D3504A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8729E9F2B32DCFB00D3504A /* Assets.xcassets */; };
 		B8729EA32B32DCFB00D3504A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B8729EA22B32DCFB00D3504A /* Preview Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B805E2752B341A0600C70B00 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		B8729E982B32DCFB00D3504A /* Hafez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hafez.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8729E9B2B32DCFB00D3504A /* HafezApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HafezApp.swift; sourceTree = "<group>"; };
 		B8729E9F2B32DCFB00D3504A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				B8729EBD2B33321300D3504A /* components.swift */,
+				B805E2752B341A0600C70B00 /* Const.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				B8729EB02B32E70400D3504A /* Coloring.swift in Sources */,
 				B8729E9C2B32DCFB00D3504A /* HafezApp.swift in Sources */,
 				B8729EB22B32E72E00D3504A /* Name.swift in Sources */,
+				B805E2762B341A0600C70B00 /* Const.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
