@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct Home: View {
+    var name: String
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Welcome, \(name)!")
+        }
+     //   .navigationTitle("Home")
     }
 }
 
-#Preview {
-    Home()
+struct Name_Previews: PreviewProvider {
+    static var previews: some View {
+        Name()
+    }
+    
 }

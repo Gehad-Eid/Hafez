@@ -1,18 +1,100 @@
-//
-//  Onboarding.swift
-//  Hafez
-//
-//  Created by Gehad Eid on 20/12/2023.
-//
-
 import SwiftUI
 
-struct Onboarding: View {
+struct OnboardingItem: Identifiable {
+    var id = UUID()
+    var imageName: String
+    var title: String
+    var description: String
+}
+
+let onboardingData: [OnboardingItem] = [
+    OnboardingItem(imageName: "boarding1", title: "أهلًا ايها الحافظ الصغير", description: "مستعد تبدأ معنا أول خطوات التنظيم؟"),
+    OnboardingItem(imageName: "boarding2", title: "لون وإستمتع", description: "اجعل الصلاة لحظة من المرح والتأمل مع ألوان مشرقة وشخصيات محببة"),
+    OnboardingItem(imageName: "boarding3", title: "إنتظم وإستمر", description: "اجعلوا التنظيم شريكًا يوميًا لحياتك، وستصبحون أكثر تركيزًا وفعالية"),
+    OnboardingItem(imageName: "boarding4", title: "انت قدها يا محافظ", description: "معنا سيتم توجيهك إلى التنظيم اليومي وتطوير عادات صحيحة التي ستستمر معك مدى الحياة")
+]
+
+
+struct OnboardingView: View {
+    @State private var currentPage = 0
+    @State private var isOnboardingComplete = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ZStack {
+                Image("Background")
+                    .resizable()
+                    .opacity(0.5)
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+
+
+                VStack(alignment: .center) {
+                    HStack(alignment: .top) {
+                        Spacer()
+                        SpeakerButtonCircle()
+                            .padding(25)
+                    }
+                    .ignoresSafeArea()
+                    TabView(selection: $currentPage) {
+                        ForEach(onboardingData.indices, id: \.self) { index in
+                            OnboardingSlideView(item: onboardingData[index])
+                                .tag(index)
+                        }
+                    }
+                    .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
+                    
+    
+                    
+                    if currentPage == 3 {
+                        NavigationLink(destination: Name()) {
+                            StartButtonCircle(isOnboardingComplete: $isOnboardingComplete)
+                        }
+                    } else {
+                        NextButtonCircle(currentPage: $currentPage)
+                    }
+
+                    Spacer()
+
+                        .fullScreenCover(isPresented: $isOnboardingComplete, content: {
+                            Name()
+                        })
+                }
+            }
+        }
     }
 }
 
-#Preview {
-    Onboarding()
+
+struct OnboardingSlideView: View {
+    let item: OnboardingItem
+
+    var body: some View {
+        VStack(alignment: .center) {
+        
+            Image(item.imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 300, height: 300) // Adjust the frame size as needed
+
+            Text(item.title)
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(Color("textColor")) // Use the appropriate color type
+                .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
+                .padding()
+
+            Text(item.description)
+                .multilineTextAlignment(.center)
+                .foregroundColor(Color("textColor")) // Use the appropriate color type
+                .padding()
+        }
+
+    }
+}
+
+struct OnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView()
+    }
 }
