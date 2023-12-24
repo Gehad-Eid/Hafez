@@ -8,25 +8,42 @@
 import SwiftUI
 
 struct popUp: View {
-    @State private var showAlert = false
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
-        VStack {
-                            Button("Show Pop-up") {
-                                showAlert = true
+        ZStack {
+            Color(.gray)
+                .ignoresSafeArea()
+                .opacity(0.5)
+            
+            VStack {
+                RoundedRectangle(cornerRadius: 15)
+                    .fill(Color("beige"))
+                    .frame(width: 300, height: 200)
+                    .overlay(
+                        VStack {
+                            
+                            Image( "good")
+                                .foregroundColor(.white)
+                                .imageScale(.large)
+                            
+                            Button(action: {
+                                dismiss()
+                            }) {
+                                Image( "check")
+                                    .foregroundColor(.white)
+                                    .imageScale(.large)
                             }
                         }
-                        .alert(isPresented: $showAlert) {
-                            Alert(
-                                title: Text("Hello"),
-                                message: Text("This is a pop-up notification!"),
-                                dismissButton: .default(Text("Custom Button")) {
-                                    // Handle custom button action
-                                    print("Custom button tapped")
-                                }
-                            )
-                        }    }
-}
+                    )
+            }
 
-#Preview {
-    popUp()
+        }
+    }
+    
 }
+    
+    #Preview{
+            popUp()
+        }
+    
