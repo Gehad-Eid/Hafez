@@ -18,7 +18,7 @@ struct Coloring: View {
                     BackButtonCircle()
                     Spacer()
                     DoneButtonCircle()
-                    SpeakerButtonCircle()
+//                    SpeakerButtonCircle()
                 }
                 
                 Spacer()

@@ -15,6 +15,7 @@ struct BackButtonCircle: View {
             dismiss()
         }) {
             Image("bk")
+                .accessibilityLabel("زر الرجوع")
                 .foregroundColor(.blue)
                 .bold()
                 .frame(width: 100,height: 100)
@@ -29,6 +30,8 @@ struct StartButtonCircle: View {
             isOnboardingComplete = true // Changed from "currentPage -> Name()" to "currentPage = 0"
         }) {
             Image("Start")
+                .accessibilityLabel("زر البدء")
+
                 .foregroundColor(.blue)
                 .bold()
                 .frame(width: 100, height: 100)
@@ -38,22 +41,22 @@ struct StartButtonCircle: View {
 
 
 
-struct DoneNamingeButtonCircle: View {
-    @Binding var currentPageName: Int
-    @Binding var isDone: Bool
-    
-    var body: some View {
-                Button(action: {
-                    isDone = true
-                }) {
-                    Image("Done")
-                        .foregroundColor(.blue)
-                        .bold()
-                        .frame(width: 100, height: 100)
-        
-                }
-            }
-        }
+//struct DoneNamingeButtonCircle: View {
+//    @Binding var currentPageName: Int
+//    @Binding var isDone: Bool
+//    
+//    var body: some View {
+//                Button(action: {
+//                    isDone = true
+//                }) {
+//                    Image("Done")
+//                        .foregroundColor(.blue)
+//                        .bold()
+//                        .frame(width: 100, height: 100)
+//        
+//                }
+//            }
+//        }
 //        Button(action: {
 //            if name.isEmpty {
 //                print("Please enter your name.")
@@ -84,6 +87,7 @@ struct NextButtonCircle: View {
             currentPage += 1
         }) {
             Image("Next")
+                .accessibilityLabel("زر التالي")
                 .foregroundColor(.blue)
                 .bold()
                 .frame(width: 100,height: 100)
@@ -99,6 +103,7 @@ struct DoneButtonCircle: View {
             dismiss()
         }) {
             Image("dn")
+                .accessibilityLabel("زر الانهاء")
                 .foregroundColor(.blue)
                 .bold()
                 .frame(height: 100)
@@ -106,21 +111,21 @@ struct DoneButtonCircle: View {
     }
 }
 
-struct SpeakerButtonCircle: View {
-    @Environment(\.dismiss) var dismiss
-    
-    var body: some View {
-        Button(action: {
-            dismiss()
-        }) {
-            Image("spkr")
-                .foregroundColor(.blue)
-                .bold()
-                .frame(height: 100)
-                .padding(.trailing,20)
-        }
-    }
-}
+//struct SpeakerButtonCircle: View {
+//    @Environment(\.dismiss) var dismiss
+//    
+//    var body: some View {
+//        Button(action: {
+//            dismiss()
+//        }) {
+//            Image("spkr")
+//                .foregroundColor(.blue)
+//                .bold()
+//                .frame(height: 100)
+//                .padding(.trailing,20)
+//        }
+//    }
+//}
 
 
 
@@ -133,50 +138,47 @@ struct FirstTapButton: View {
             action()
         }) {
             Image("firstTap")
+                .accessibilityLabel("صفحة التلوين")
+
         }
     }
 }
 
 
-//struct ProButtonCircle: View {
-//    var action: () -> Void
-//
-//    @Environment(\.dismiss) var dismiss
-//    var gender: Bool?
-//
-//    var body: some View {
-//        Button(action: {
-//            action()
-//        }) {
-//            if let gender = gender {
-//                Image(gender ? "proGirl" : "proBoy")
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fill)
-//                    .foregroundColor(.blue)
-//                    .frame(width: 100, height: 100)
-//                    .clipShape(Circle())
-//            }
-//        }
-//    }
-//}
 
 
 struct ProButtonCircle: View {
-    @Environment(\.dismiss) var dismiss
-    var gender: Bool?
+//    @Environment(\.dismiss) var dismiss
+    var gender: Bool
 
     var body: some View {
-        Button(action: {
-            dismiss()
-        }) {
-            if let gender = gender {
+//        Button(action: {
+////            dismiss()
+//        }) {
+//            if let gender = gender {
                 Image(gender ? "proGirl" : "proBoy")
+            .accessibilityLabel(gender ? "صفحتكِ الشخصيه" : "صفحتكَ الشخصية")
+
                     .foregroundColor(.blue)
                     .bold()
                     .frame(height: 100)
                     .padding(.leading,20)
 
-           }
-        }
+//           }
+//        }
+    }
+}
+
+
+struct ProimageCircle: View {
+    var gender: Bool
+    
+    var body: some View {
+        Image(gender ? "girl" : "boy")
+            .accessibilityLabel(gender ? "صورتكِ الشخصيه" : "صورتكَ الشخصية")
+//            .foregroundColor(.blue)
+//            .bold()
+//            .frame(height: 100)
+//            .padding(.leading, 20)
     }
 }

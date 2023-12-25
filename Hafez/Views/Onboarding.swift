@@ -15,6 +15,7 @@ let onboardingData: [OnboardingItem] = [
 ]
 
 
+
 struct OnboardingView: View {
     @State private var currentPage = 0
     @State private var isOnboardingComplete = false
@@ -26,13 +27,13 @@ struct OnboardingView: View {
                     .resizable()
                     .opacity(0.5)
                     .edgesIgnoringSafeArea(.all)
-                
-                HStack(alignment:.top){
-                    Spacer()
-                    SpeakerButtonCircle()
-
-
-                }.padding(.bottom,650)
+//                
+//                HStack(alignment:.top){
+//                    Spacer()
+////                    SpeakerButtonCircle()
+//
+//
+//                }.padding(.bottom,650)
 
 
                 VStack {
@@ -74,6 +75,7 @@ struct OnboardingSlideView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 300, height: 300) // Adjust the frame size as needed
+                .accessibilityLabel("صوره ترحيبية")
 
             Text(item.title)
                 .font(.title)
@@ -81,12 +83,14 @@ struct OnboardingSlideView: View {
                 .foregroundColor(Color("textColor")) // Use the appropriate color type
                 .shadow(radius: /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
                 .padding()
+                
 
             Text(item.description)
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color("textColor")) // Use the appropriate color type
                 .padding()
         }
+        .accessibilityLabel("\(item.title). \(item.description)")
 
     }
 }

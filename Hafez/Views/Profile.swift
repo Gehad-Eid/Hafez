@@ -8,14 +8,42 @@
 import SwiftUI
 
 struct Profile: View {
-        var gender: Bool
+    @Binding var gender: Bool?
 
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack{
+
+            Color("bgColor").ignoresSafeArea()
+            HStack(alignment: .top){
+                BackButtonCircle()
+                Spacer()
+            }
+            .padding(.bottom,690)
+            VStack {
+                ProimageCircle(gender: gender!)
+                
+                Text("تقدمي الاسبوعي:")
+                    .accessibilityLabel("تقدمي الاسبوعي")
+                    .font(.title)
+                    .foregroundColor(Color("textColor"))
+                    .shadow(radius: 20)
+                    .padding(.top, 100)
+
+//                 هنا جهاد تحط الكارد
+
+                }
+                
+                
+                
+                
+            }
+        }
+
     }
-}
+
+
 struct Profile_Previews: PreviewProvider {
     static var previews: some View {
-        Profile(gender: true) // or provide the actual gender value you want to preview
+        Profile(gender: .constant(true))
     }
 }
