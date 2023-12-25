@@ -6,55 +6,125 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct Coloring: View {
+    @Environment(\.modelContext) var modelContext
+    @Query var canvases : [canvas]
+    
+    @State private var lines : [Line] = []
+    @State private var currentLine = Line()
+    @State private var selectedColor = Color.clear
+    @State private var currentColor = ""
+    
+    private func addCanvas() {
+        let canvas = canvas(lines: lines)
+        modelContext.insert(canvas)
+    }
+    
     var body: some View {
-        ZStack{
-            // Background color
-            Color("bgColor").ignoresSafeArea()
-            
-            VStack {
-                HStack(alignment: .top){
-                    BackButtonCircle()
+        GeometryReader { geometry in
+            ZStack{
+                // Background color
+                Color("bgColor").ignoresSafeArea()
+                
+                VStack {
+                    HStack(alignment: .top){
+                        BackButtonCircle()
+                        Spacer()
+                        DoneButtonCircle()
+                        SpeakerButtonCircle()
+                    }
+                    
+//                    Spacer()
+                    
+                    Text("لوّن كل يوم صلاتك يا بطل")
+                        .font(.title)
+                        .foregroundStyle(Color("textColor"))
+                        .accessibilityAddTraits(.isHeader)
+                    
+//                    Spacer()
+                    
+                    ZStack (alignment: .topTrailing){
+                        Canvas{ context, size in
+                            for line in lines {
+                                var path = Path()
+                                path.addLines(line.points)
+                                context.stroke(path, with: .color(.red/*line.color*/) ,style: StrokeStyle(lineWidth:2, lineCap: .round, lineJoin: .round))
+                            }
+                        }
+                        .gesture(
+                            DragGesture(minimumDistance: 0, coordinateSpace: .local)
+                                .onChanged({ value in
+                                    let newPoint = value.location
+                                    currentLine.points.append(newPoint)
+                                    self.lines.append(currentLine)
+                                    addCanvas()
+                                })
+                                .onEnded({ value in
+                                    self.currentLine = Line(points: []/*,color: selectedColor*/)
+                                })
+                        )
+                        
+                        Image("imagec")
+                            .resizable()
+                            .opacity(0.5)
+                            .frame(width: geometry.size.width > 1700 ?  geometry.size.width * 0.5 : geometry.size.width * 0.7, height: geometry.size.height < 500 ? geometry.size.height * 0.5 : geometry.size.height * 0.6)
+                            .accessibilityLabel("شجرة صلوات الإسبوع")
+                            .accessibilityHint("اختر لون من الاسفل و قم بتحديد الصلاة المناسبة")
+                    }
+                    .onChange(of: selectedColor){ newColor in
+//                        currentLine.color = newColor
+                    }
+                    .frame(width: geometry.size.width > 1700 ?  geometry.size.width * 0.5 : geometry.size.width * 0.7, height: geometry.size.height < 500 ? geometry.size.height * 0.5 : geometry.size.height * 0.6)
+                    
                     Spacer()
-                    DoneButtonCircle()
-                    SpeakerButtonCircle()
-                }
-                
-                Spacer()
-                
-                Text("لوّن كل يوم صلاتك يا بطل")
-                    .font(.title)
-                    .foregroundStyle(Color("textColor"))
-                
-                Spacer()
-                
-                ZStack (alignment: .topTrailing){
-                    Image("imagec")
-                        .resizable()
-                        .frame(width: 350,height: 400)
                     
-                    Image(systemName: "arrow.up.left.and.down.right.and.arrow.up.right.and.down.left")
-                        .padding(10)
-                }
-                
-                
-                HStack(alignment: .bottom){
+                    HStack(alignment: .bottom){
+                        Spacer()
+                        
+                        Image("gren")
+                            .resizable()
+                            .frame(width: 70, height: currentColor == "green" ? 180 : 200)
+                            .accessibilityHint("قم بالضغط عليه لمرة حتى يتم اختيار اللون الاخضر")
+                            .accessibilityLabel("في وقتها")
+                            .onTapGesture {
+                                selectedColor = Color.green
+                                currentColor = "green"
+                            }
+                        
+                        Spacer()
+                        
+                        Image("yel")
+                            .resizable()
+                            .frame(width: 70, height: currentColor == "yel" ? 180 : 200)
+                            .accessibilityHint("قم بالضغط عليه لمرة حتى يتم اختيار اللون الاصفر")
+                            .accessibilityLabel("تأخرتُ قليلًا")
+                            .onTapGesture {
+                                selectedColor = Color.yellow
+                                currentColor = "yel"
+                            }
+                        
+                        Spacer()
+                        
+                        Image("red")
+                            .resizable()
+                        //                            .frame(width: 70,height: 200)
+                            .frame(width: 70, height: currentColor == "red" ? 180 : 200)
+//                            .accessibilityElement()
+                            .accessibilityLabel("لم اُصلِها")
+                            .accessibilityHint("قم بالضغط عليه لمرة حتى يتم اختيار اللون الاحمر")
+                            .onTapGesture {
+                                selectedColor = Color.red
+                                currentColor = "red"
+                            }
+                        
+                        Spacer()
+                    }
                     
-                    Image("gren")
-                        .resizable()
-                        .frame(width: 70,height: 200)
-                    Image("yel")
-                        .resizable()
-                        .frame(width: 70,height: 200)
-                    Image("red")
-                        .resizable()
-                        .frame(width: 70,height: 200)
+                    Spacer()
                     
                 }
-                
-                Spacer()
-                
             }
         }
     }

@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import SwiftData
+
 
 @main
 struct HafezApp: App {
@@ -13,5 +15,7 @@ struct HafezApp: App {
         WindowGroup {
             SplashScreen()
         }
+        .modelContainer(for: Line.self )
+        .modelContainer(for: canvas.self )
     }
-}
+} 

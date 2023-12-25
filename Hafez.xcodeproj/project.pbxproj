@@ -19,6 +19,8 @@
 		B8729EB62B32E74D00D3504A /* popUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8729EB52B32E74D00D3504A /* popUp.swift */; };
 		B8729EB82B32E75B00D3504A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8729EB72B32E75B00D3504A /* Profile.swift */; };
 		B8729EBE2B33321300D3504A /* components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8729EBD2B33321300D3504A /* components.swift */; };
+		B8B80A5F2B382DEB00029C9B /* CanvasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80A5E2B382DEB00029C9B /* CanvasData.swift */; };
+		B8B80A622B3962F500029C9B /* LineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80A612B3962F500029C9B /* LineModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,9 @@
 		B8729EB52B32E74D00D3504A /* popUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = popUp.swift; sourceTree = "<group>"; };
 		B8729EB72B32E75B00D3504A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		B8729EBD2B33321300D3504A /* components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = components.swift; sourceTree = "<group>"; };
+		B8B80A5E2B382DEB00029C9B /* CanvasData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasData.swift; sourceTree = "<group>"; };
+		B8B80A602B38ADBC00029C9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B8B80A612B3962F500029C9B /* LineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +72,7 @@
 		B8729E9A2B32DCFB00D3504A /* Hafez */ = {
 			isa = PBXGroup;
 			children = (
+				B8B80A602B38ADBC00029C9B /* Info.plist */,
 				B8729EBC2B3331DE00D3504A /* Components */,
 				B8729EBB2B32E79800D3504A /* Views */,
 				B8729EBA2B32E78800D3504A /* Models */,
@@ -88,6 +94,8 @@
 		B8729EBA2B32E78800D3504A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B8B80A5E2B382DEB00029C9B /* CanvasData.swift */,
+				B8B80A612B3962F500029C9B /* LineModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -157,6 +165,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = B8729E8F2B32DCFB00D3504A;
 			productRefGroup = B8729E992B32DCFB00D3504A /* Products */;
@@ -186,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B8729EB42B32E73F00D3504A /* Onboarding.swift in Sources */,
+				B8B80A5F2B382DEB00029C9B /* CanvasData.swift in Sources */,
 				B8729EB82B32E75B00D3504A /* Profile.swift in Sources */,
 				B8729EBE2B33321300D3504A /* components.swift in Sources */,
 				B8729EB62B32E74D00D3504A /* popUp.swift in Sources */,
@@ -195,6 +205,7 @@
 				B8729E9C2B32DCFB00D3504A /* HafezApp.swift in Sources */,
 				B8729EB22B32E72E00D3504A /* Name.swift in Sources */,
 				B805E2762B341A0600C70B00 /* Const.swift in Sources */,
+				B8B80A622B3962F500029C9B /* LineModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,11 +342,11 @@
 				DEVELOPMENT_TEAM = N5C4229YSA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Hafez/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -360,11 +371,11 @@
 				DEVELOPMENT_TEAM = N5C4229YSA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Hafez/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
