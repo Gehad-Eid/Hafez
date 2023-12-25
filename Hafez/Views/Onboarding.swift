@@ -11,7 +11,7 @@ let onboardingData: [OnboardingItem] = [
     OnboardingItem(imageName: "boarding1", title: "أهلًا ايها الحافظ الصغير", description: "مستعد تبدأ معنا أول خطوات التنظيم؟"),
     OnboardingItem(imageName: "boarding2", title: "لون وإستمتع", description: "اجعل الصلاة لحظة من المرح والتأمل مع ألوان مشرقة وشخصيات محببة"),
     OnboardingItem(imageName: "boarding3", title: "إنتظم وإستمر", description: "اجعلوا التنظيم شريكًا يوميًا لحياتك، وستصبحون أكثر تركيزًا وفعالية"),
-    OnboardingItem(imageName: "boarding4", title: "انت قدها يا محافظ", description: "معنا سيتم توجيهك إلى التنظيم اليومي وتطوير عادات صحيحة التي ستستمر معك مدى الحياة")
+    OnboardingItem(imageName: "boarding4", title: "انت قدها ايها الحافظ", description: "معنا سيتم توجيهك إلى التنظيم اليومي وتطوير عادات صحيحة التي ستستمر معك مدى الحياة")
 ]
 
 
@@ -25,17 +25,17 @@ struct OnboardingView: View {
                 Image("Background")
                     .resizable()
                     .opacity(0.5)
-                    .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
+                
+                HStack(alignment:.top){
+                    Spacer()
+                    SpeakerButtonCircle()
 
 
-                VStack(alignment: .center) {
-                    HStack(alignment: .top) {
-                        Spacer()
-                        SpeakerButtonCircle()
-                            .padding(25)
-                    }
-                    .ignoresSafeArea()
+                }.padding(.bottom,650)
+
+
+                VStack {
                     TabView(selection: $currentPage) {
                         ForEach(onboardingData.indices, id: \.self) { index in
                             OnboardingSlideView(item: onboardingData[index])
@@ -43,8 +43,6 @@ struct OnboardingView: View {
                         }
                     }
                     .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-                    
-    
                     
                     if currentPage == 3 {
                         NavigationLink(destination: Name()) {

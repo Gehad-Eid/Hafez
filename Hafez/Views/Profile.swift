@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct Profile: View {
+        var gender: Bool
+
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
-
-#Preview {
-    Profile()
+struct Profile_Previews: PreviewProvider {
+    static var previews: some View {
+        Profile(gender: true) // or provide the actual gender value you want to preview
+    }
 }

@@ -1,50 +1,48 @@
-//
-//  Name.swift
-//  Hafez
-//
-//  Created by Gehad Eid on 20/12/2023.
-//
-
 import SwiftUI
 
 struct Name: View {
-    @State private var currentPageName = 0
-    @State private var isDone = false
     @State private var name = ""
-    
-    @State private var isNameEntered: Bool = false
+    @State private var gender: Bool? = nil
+    @State private var isDone = false
 
-    
-     
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack(alignment: .top) {
                 Image("Background")
                     .resizable()
                     .opacity(0.5)
-                    .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
-                
-                
-                VStack(alignment: .center) {
-                    HStack(alignment: .top) {
-                        Spacer()
-                        SpeakerButtonCircle()
-                            .padding(.trailing)
-                            .padding(.bottom,130)
-                    }
-                    
-                    Text("قم بالإختيار:")
+
+                HStack(alignment: .top) {
+                    Spacer()
+                    SpeakerButtonCircle()
+                }
+                .padding(.bottom)
+
+                VStack {
+                    Text("قم بالاختيار: ")
                         .font(.title)
                         .foregroundColor(Color("textColor"))
                         .shadow(radius: 20)
-                    HStack{
+                        .padding(.top, 100)
+
+                    HStack {
                         Image("boy")
+                            .opacity(gender == false ? 1.0 : 0.6)
+                            .onTapGesture {
+                                gender = false
+                            }
+
                         Image("girl")
-                    }.padding()
+                            .opacity(gender == true ? 1.0 : 0.6)
+                            .onTapGesture {
+                                gender = true
+                            }
+                    }
+                    .padding()
+
                     ZStack {
                         TextField(" ", text: $name)
-                          //  .foregroundColor()
                             .multilineTextAlignment(.center)
                             .frame(height: 50)
                             .background(
@@ -55,19 +53,49 @@ struct Name: View {
                                     .clipped()
                             )
                     }
-                    NavigationLink(destination: Home(name: name), isActive: $isDone) {
-                                         EmptyView()
-                                     }
-                   DoneNamingeButtonCircle(currentPageName: $currentPageName, isDone: $isDone)
-                    
+                    .onChange(of: name) { newName in
+                        if newName.count > 15 {
+                            name = String(newName.prefix(15))
+                        }
+                    }
 
+
+                    NavigationLink(destination: HomeView(name: $name, gender: $gender), isActive: $isDone) {
+                        EmptyView()
+                    }
+                    .hidden()
                 
+
+                    Button(action: {
+                        if name.isEmpty || gender == nil {
+                            // Show an alert or handle the case where name or gender is not entered
+                        } else {
+                            saveUserDataLocally()
+                            isDone = true
+                        }
+                    }) {
+                        Image("Done")
+                            .opacity(gender != nil && !name.isEmpty ? 1.0 : 0.7)
+                    }
+                    .disabled(gender == nil || name.isEmpty)
+                    .padding()
                 }
             }
         }
     }
-}
 
+    func saveUserDataLocally() {
+        UserDefaults.standard.set(name, forKey: "userName")
+        UserDefaults.standard.set(gender, forKey: "userGender")
+    }
+
+    struct Name_Previews: PreviewProvider {
+        static var previews: some View {
+            Name()
+        }
+    }
+}
 #Preview {
     Name()
 }
+
