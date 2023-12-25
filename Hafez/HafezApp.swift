@@ -15,7 +15,7 @@ struct HafezApp: App {
         WindowGroup {
             SplashScreen()
         }
-        .modelContainer(for: Line.self )
-        .modelContainer(for: canvas.self )
+//        .modelContainer(for: Line.self )
+//        .modelContainer(for: canvas.self )
     }
 } 

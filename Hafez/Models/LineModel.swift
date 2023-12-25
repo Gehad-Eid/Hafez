@@ -6,25 +6,33 @@
 //
 
 import SwiftUI
-import SwiftData
 
-@Model
-class Line {
+//@Model
+struct Line: Codable {
     var points = [CGPoint]()
-//    var color = Color.red
+    var colorString: String // Store color as a String
     
-    init(points: [CGPoint] = [CGPoint]()/*, color: Color = Color.red*/) {
+    init(points: [CGPoint] = [], colorString: String = "") {
         self.points = points
-//        self.color = color
+        self.colorString = colorString
     }
+    
+//    // Convert Color to String for storing
+//    mutating func setColor(_ color: Color) {
+//        self.colorString = color.description // Store color as a string representation
+//    }
+//    
+//    // Get Color from stored string
+//    func getColor() -> Color {
+//        return Color(colorString) // Retrieve color from the stored string
+//    }
 }
 
-@Model
-class canvas {
-   var lines = [Line]()
+//@Model
+class canvas: Codable {
+    var lines = [Line]()
     
-    init(lines: [Line] = [Line]()) {
+    init(lines: [Line] = []) {
         self.lines = lines
     }
 }
-

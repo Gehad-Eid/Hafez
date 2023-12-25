@@ -20,6 +20,7 @@
 		B8729EBE2B33321300D3504A /* components.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8729EBD2B33321300D3504A /* components.swift */; };
 		B8B80A5F2B382DEB00029C9B /* CanvasData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80A5E2B382DEB00029C9B /* CanvasData.swift */; };
 		B8B80A622B3962F500029C9B /* LineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80A612B3962F500029C9B /* LineModel.swift */; };
+		B8B80A642B39D4B800029C9B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B80A632B39D4B800029C9B /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		B8B80A5E2B382DEB00029C9B /* CanvasData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasData.swift; sourceTree = "<group>"; };
 		B8B80A602B38ADBC00029C9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B8B80A612B3962F500029C9B /* LineModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineModel.swift; sourceTree = "<group>"; };
+		B8B80A632B39D4B800029C9B /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,12 +104,12 @@
 			isa = PBXGroup;
 			children = (
 				B8729EA92B32E6CE00D3504A /* SplashScreen.swift */,
-				E540409D2B382E8F004DA976 /* HomeView.swift */,
 				B8729EAF2B32E70400D3504A /* Coloring.swift */,
 				B8729EB12B32E72E00D3504A /* Name.swift */,
 				B8729EB32B32E73F00D3504A /* Onboarding.swift */,
 				B8729EB52B32E74D00D3504A /* popUp.swift */,
 				B8729EB72B32E75B00D3504A /* Profile.swift */,
+				B8B80A632B39D4B800029C9B /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,10 +200,10 @@
 				B8729EBE2B33321300D3504A /* components.swift in Sources */,
 				B8729EB62B32E74D00D3504A /* popUp.swift in Sources */,
 				B8729EAA2B32E6CE00D3504A /* SplashScreen.swift in Sources */,
-				E540409E2B382E8F004DA976 /* HomeView.swift in Sources */,
 				B8729EB02B32E70400D3504A /* Coloring.swift in Sources */,
 				B8729E9C2B32DCFB00D3504A /* HafezApp.swift in Sources */,
 				B8729EB22B32E72E00D3504A /* Name.swift in Sources */,
+				B8B80A642B39D4B800029C9B /* HomeView.swift in Sources */,
 				B805E2762B341A0600C70B00 /* Const.swift in Sources */,
 				B8B80A622B3962F500029C9B /* LineModel.swift in Sources */,
 			);

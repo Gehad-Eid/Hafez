@@ -9,18 +9,36 @@ import SwiftUI
 import SwiftData
 
 struct Coloring: View {
-    @Environment(\.modelContext) var modelContext
-    @Query var canvases : [canvas]
+//    @Environment(\.modelContext) var modelContext
+    @State var canvases: [canvas] = [] 
+    {
+           didSet {
+               saveCanvases()
+           }
+       }
     
     @State private var lines : [Line] = []
     @State private var currentLine = Line()
     @State private var selectedColor = Color.clear
     @State private var currentColor = ""
     
-    private func addCanvas() {
-        let canvas = canvas(lines: lines)
-        modelContext.insert(canvas)
-    }
+//    private func addCanvas() {
+//        let canvas = canvas(lines: lines)
+////        modelContext.insert(canvas)
+//    }
+    
+    private func saveCanvases() {
+            if let encoded = try? JSONEncoder().encode(canvases) {
+                UserDefaults.standard.set(encoded, forKey: "savedCanvases")
+            }
+        }
+
+        private func loadCanvases() {
+            if let savedData = UserDefaults.standard.data(forKey: "savedCanvases"),
+               let decoded = try? JSONDecoder().decode([canvas].self, from: savedData) {
+                canvases = decoded
+            }
+        }
     
     var body: some View {
         GeometryReader { geometry in
@@ -33,7 +51,7 @@ struct Coloring: View {
                         BackButtonCircle()
                         Spacer()
                         DoneButtonCircle()
-                        SpeakerButtonCircle()
+//                        SpeakerButtonCircle()
                     }
                     
 //                    Spacer()
@@ -50,7 +68,7 @@ struct Coloring: View {
                             for line in lines {
                                 var path = Path()
                                 path.addLines(line.points)
-                                context.stroke(path, with: .color(.red/*line.color*/) ,style: StrokeStyle(lineWidth:2, lineCap: .round, lineJoin: .round))
+                                context.stroke(path, with: .color(/*Color(line.colorString)*/ .red) ,style: StrokeStyle(lineWidth:2, lineCap: .round, lineJoin: .round))
                             }
                         }
                         .gesture(
@@ -59,10 +77,10 @@ struct Coloring: View {
                                     let newPoint = value.location
                                     currentLine.points.append(newPoint)
                                     self.lines.append(currentLine)
-                                    addCanvas()
+//                                    addCanvas()
                                 })
                                 .onEnded({ value in
-                                    self.currentLine = Line(points: []/*,color: selectedColor*/)
+                                    self.currentLine = Line(points: [],colorString: selectedColor.description)
                                 })
                         )
                         
@@ -74,7 +92,7 @@ struct Coloring: View {
                             .accessibilityHint("اختر لون من الاسفل و قم بتحديد الصلاة المناسبة")
                     }
                     .onChange(of: selectedColor){ newColor in
-//                        currentLine.color = newColor
+                        currentLine.colorString = newColor.description
                     }
                     .frame(width: geometry.size.width > 1700 ?  geometry.size.width * 0.5 : geometry.size.width * 0.7, height: geometry.size.height < 500 ? geometry.size.height * 0.5 : geometry.size.height * 0.6)
                     
@@ -130,6 +148,6 @@ struct Coloring: View {
     }
 }
 
-#Preview {
-    Coloring()
-}
+//#Preview {
+//    Coloring()
+//}
