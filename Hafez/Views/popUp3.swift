@@ -1,13 +1,13 @@
 //
-//  popUp.swift
+//  popUp3.swift
 //  Hafez
 //
-//  Created by Gehad Eid on 20/12/2023.
+//  Created by Nora Aldossary on 11/06/1445 AH.
 //
 
 import SwiftUI
 
-struct popUp: View {
+struct popUp3: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -23,7 +23,7 @@ struct popUp: View {
                     .overlay(
                         VStack {
                             
-                            Image( "good")
+                            Image( "never")
                                 .foregroundColor(.white)
                                 .imageScale(.large)
                             
@@ -40,10 +40,8 @@ struct popUp: View {
 
         }
     }
-    
 }
-    
-    #Preview{
-            popUp()
-        }
-    
+
+#Preview {
+    popUp3()
+}
